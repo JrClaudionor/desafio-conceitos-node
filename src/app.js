@@ -10,7 +10,7 @@ app.use(cors());
 
 const repositories = [];
 
-function validateProjectId(request, response, next) {
+function validateRepositoryId(request, response, next) {
   const { id } = request.params;
 
   if(!isUuid(id)) {
@@ -24,7 +24,7 @@ app.get("/repositories", (request, response) => {
   return response.json(repositories);
 });
 
-app.use('/repositories/:id', validateProjectId);
+app.use('/repositories/:id', validateRepositoryId);
 
 app.post("/repositories", (request, response) => {
   const { title, url, techs } = request.body;
